@@ -5,15 +5,18 @@ function Countrysearch() {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    fetch("https://restcountries.com/v3.1/all")
-      .then((response) => response.json())
-      .then((data) => {
-        setCountries(data);
-      })
-      .catch((e) => {
-        console.error("Error fetching data", e);
-      });
+    fetchData();
   }, []);
+
+  const fetchData = async () => {
+    try {
+      const res = await fetch("https://restcountries.com/v3.1/all");
+      const data = await res.json();
+      setCountries(data);
+    } catch (e) {
+      alert("Error fetching data");
+    }
+  };
 
   const containerStyle = {
     display: "flex",
