@@ -22,7 +22,7 @@ function Countrysearch() {
     fetch(`https://restcountries.com/v3.1/all`)
       .then((res) => res.json())
       .then((data) => setCountries(data))
-      .catch((err) => console.error("Error fetching data: ", err));
+      .catch((err) => console.log("Error fetching data: ", err));
   }, []);
 
   const containerStyle = {
