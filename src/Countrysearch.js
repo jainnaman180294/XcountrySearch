@@ -19,7 +19,7 @@ function Countrysearch() {
   // }, []);
 
   useEffect(() => {
-    fetch("https://restcountries.com/v3.1/all")
+    fetch(`https://restcountries.com/v3.1/all`)
       .then((res) => res.json())
       .then((data) => setCountries(data))
       .catch((err) => console.error("Error fetching data: ", err));
@@ -57,6 +57,7 @@ function Countrysearch() {
   };
 
   const searchBox = {
+    marginTop: "10px",
     width: "800px",
     height: "30px",
   };
