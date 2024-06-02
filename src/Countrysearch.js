@@ -84,10 +84,10 @@ function Countrysearch() {
             <div key={country.cca3} style={cardStyle}>
               <img
                 src={country.flags.png}
-                alt={`Flag of ${country.name.common}`}
+                alt={`Flag of ${country.flags}`}
                 style={imageStyle}
               />
-              <h2>{country.name.common}</h2>
+              <p>{country.name.common}</p>
             </div>
           ))}
       </div>
