@@ -29,7 +29,7 @@ function Countrysearch() {
     setSearch(e.target.value);
   };
 
-  const containerStyle = {
+  const countryCard = {
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "center",
@@ -75,7 +75,7 @@ function Countrysearch() {
         value={search}
         onChange={(e) => handleChange(e)}
       />
-      <div style={containerStyle}>
+      <div style={countryCard}>
         {countries
           .filter((country) =>
             country.name.common.toLowerCase().includes(search.toLowerCase())
