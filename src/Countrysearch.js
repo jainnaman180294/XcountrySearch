@@ -4,26 +4,31 @@ function Countrysearch() {
   const [countries, setCountries] = useState([]);
   const [search, setSearch] = useState("");
 
-  // const fetchData = async () => {
-  //   try {
-  //     const res = await fetch("https://restcountries.com/v3.1/all");
-  //     const data = await res.json();
-  //     setCountries(data);
-  //   } catch (e) {
-  //     console.error("Error fetching data",e);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
+  const fetchData = async () => {
+    try {
+      const res = await fetch("https://restcountries.com/v3.1/all");
+      console.log(res);
+      const data = await res.json();
+      setCountries(data);
+    } catch (e) {
+      console.error("Error fetching data", e);
+    }
+  };
 
   useEffect(() => {
-    fetch(`https://restcountries.com/v3.1/all`)
-      .then((res) => res.json())
-      .then((data) => setCountries(data))
-      .catch((err) => console.log("Error fetching data: ", err));
+    fetchData();
   }, []);
+
+  // useEffect(() => {
+  //   fetch(`https://restcountries.com/v3.1/all`)
+  //     .then((res) => res.json())
+  //     .then((data) => setCountries(data))
+  //     .catch((err) => console.log("Error fetching data: ", err));
+  // }, []);
+
+  const handleChange = (e) => {
+    setSearch(e.target.value);
+  };
 
   const containerStyle = {
     display: "flex",
@@ -69,7 +74,7 @@ function Countrysearch() {
         placeholder="Search country..."
         style={searchBox}
         value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={(e) => handleChange(e)}
       />
       <div style={containerStyle}>
         {countries
