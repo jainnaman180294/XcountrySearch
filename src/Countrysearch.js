@@ -4,18 +4,25 @@ function Countrysearch() {
   const [countries, setCountries] = useState([]);
   const [search, setSearch] = useState("");
 
-  const fetchData = async () => {
-    try {
-      const res = await fetch("https://restcountries.com/v3.1/all");
-      const data = await res.json();
-      setCountries(data);
-    } catch (e) {
-      console.error("Error fetching data",e);
-    }
-  };
+  // const fetchData = async () => {
+  //   try {
+  //     const res = await fetch("https://restcountries.com/v3.1/all");
+  //     const data = await res.json();
+  //     setCountries(data);
+  //   } catch (e) {
+  //     console.error("Error fetching data",e);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
 
   useEffect(() => {
-    fetchData();
+    fetch("https://restcountries.com/v3.1/all")
+      .then((res) => res.json())
+      .then((data) => setCountries(data))
+      .catch((err) => console.error("Error fetching data: ", err));
   }, []);
 
   const containerStyle = {
