@@ -4,10 +4,6 @@ function Countrysearch() {
   const [countries, setCountries] = useState([]);
   const [search, setSearch] = useState("");
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
   const fetchData = async () => {
     try {
       const res = await fetch("https://restcountries.com/v3.1/all");
@@ -17,6 +13,10 @@ function Countrysearch() {
       console.error("Error fetching data",e);
     }
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const containerStyle = {
     display: "flex",
