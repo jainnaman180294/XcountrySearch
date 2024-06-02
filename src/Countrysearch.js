@@ -14,7 +14,7 @@ function Countrysearch() {
       const data = await res.json();
       setCountries(data);
     } catch (e) {
-      alert("Error fetching data");
+      console.error("Error fetching data",e);
     }
   };
 
